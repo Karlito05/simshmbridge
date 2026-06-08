@@ -16,6 +16,11 @@
 #include "simapi/include/acdata.h"
 //#include "simapi/simmap/mapacdata.h"
 #endif
+#ifdef ASSETTOCORSEVO
+#include "simapi/simapi/ac.h"
+#include "simapi/include/acdata.h"
+//#include "simapi/simmap/mapacdata.h"
+#endif
 #ifdef RFACTOR2
 #include "simapi/simapi/rf2.h"
 #include "simapi/include/rf2data.h"

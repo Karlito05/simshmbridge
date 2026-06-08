@@ -1,0 +1,25 @@
+all: assets/aceshm assets/acebridge.exe assets/acehandle.exe assets/acehandle
+debug: assets/aceshm assets/acebridge.exe assets/acehandle.exe assets/acehandle
+
+CC=gcc
+WINECC=x86_64-w64-mingw32-gcc
+CFLAGS=-DASSETTOCORSAEVO -Wall -Os
+
+debug: CFLAGS += -DDEBUG -g
+
+assets/aceshm: createsimshm.c
+	$(CC) $< $(CFLAGS) -o $@
+
+assets/acehandle: bridge.c
+	$(CC) $< $(CFLAGS) -o $@
+
+assets/acebridge.exe: simshmbridge.c
+	$(WINECC) $< $(CFLAGS) -DHELPERPROCESSFIRST -mconsole -o $@
+
+assets/acehandle.exe: simshmbridge.c
+	$(WINECC) $< $(CFLAGS) -DHELPERPROCESSSECOND -mconsole -o $@
+
+clean:
+	rm -f assets/aceshm assets/acebridge.exe assets/acehandle.exe assets/acehandle
+
+# vim: syntax=make ts=4 sw=4 sts=4 sr noet
