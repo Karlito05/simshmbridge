@@ -58,6 +58,18 @@ size_t getSharedMemorySize(char* MemFileName)
     {
     	return AC_STATIC_SIZE;
     }
+    if(strcicmp(MemFileName, ACEVO_PHYSICS_FILE) == 0)
+    {
+    	return AC_PHYSICS_SIZE;
+    }
+    if(strcicmp(MemFileName, ACEVO_GRAPHIC_FILE) == 0)
+    {
+    	return AC_GRAPHIC_SIZE;
+    }
+    if(strcicmp(MemFileName, ACEVO_STATIC_FILE) == 0)
+    {
+    	return AC_STATIC_SIZE;
+    }
     if(strcicmp(MemFileName, AC_CREWCHIEF_FILE) == 0)
     {
     	return AC_CREWCHIEF_SIZE;

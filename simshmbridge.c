@@ -36,11 +36,16 @@ int pids[4];
  * Game Variables
  * ***********/
 
-#ifdef ASSETTOCORSA
+#if defined(ASSETTOCORSA) || defined(ASSETTOCORSAEVO)
 #include "simapi/simapi/ac.h"
 #include "simapi/include/acdata.h"
 
+#ifdef ASSETTOCORSA
 LPCSTR filefind = "acpmf_*";
+#endif
+#ifdef ASSETTOCORSAEVO
+LPCSTR filefind = "acevo_pmf_*";
+#endif
 // define a single file to use as a test to see if the game has initialized the shared memory
 LPCSTR file1 = AC_PHYSICS_FILE;
 
@@ -71,10 +76,6 @@ size_t getmemfilesize(const char* filename)
         return AC_GRAPHIC_SIZE;
     }
     if(strcmp(filename, AC_CREWCHIEF_FILE) == 0)
-    {
-        return AC_CREWCHIEF_SIZE;
-    }
-    if(strcmp(filename, "acpmf_secondMonitor") == -1)
     {
         return AC_CREWCHIEF_SIZE;
     }
